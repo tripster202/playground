@@ -1,4 +1,3 @@
-import math
 import random
 from itertools import product
 from collections import Counter

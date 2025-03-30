@@ -1,3 +1,17 @@
+# The game starts by placing a 3-digit guess (123).
+# The game then outputs unordered green and red gumballs based on the number of correct digits and their position (GRR).
+# I call the unordered green and red gumballs the 'GRR code'.
+# The user wins the game when all gumballs return green (GGG), indicating that the users has guessed all the correct digits in the correct position.
+
+# This program works by iterating over all remaining guesses to compare each guess against the user guess for a matching GRR code.
+# GRR codes have a commutative property, meaning the program can compare the GRR codes of all other guesses against the user guess and the single correct guess will have the same GRR code as the user guess each time.
+# Incorrect guesses will have different GRR codes and will be filtered out of the pool of remaining guesses.
+
+# The program then recommends a best next guess by determining which of the remaining guesses has the lowest maximum score.
+# The score is the maximum number of GRR code matches to other remaining guesses.
+# If a certain guess shares the same GRR code with a large number of other guesses, little information is gained from that guess.
+# The best guess is the one that minimizes the maximum number of remaining guesses, meaning it shares its GRR code with the fewest number of other guesses.
+
 # Import necessary modules
 import math
 import random

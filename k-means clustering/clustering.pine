@@ -1,0 +1,63 @@
+//@version=6
+indicator("K-Means Support/Resistance", overlay=true)
+
+// Input parameters
+k = input.int(5, "Number of Clusters", minval=1)
+bars_back = input.int(540, "Bars Back", minval=10)
+line_width = input.int(1, "Line Width", minval=1)
+
+// Collect and sort price data
+var float[] prices = array.new_float(0)
+if bar_index == 0
+    prices := array.new_float(bars_back)
+for i = 0 to bars_back - 1
+    if bar_index >= i
+        array.set(prices, i, hl2[i])
+array.sort(prices)
+
+// Calculate cluster centers as medians
+var float[] clusters = array.new_float(0)
+if bar_index == 0
+    clusters := array.new_float(k)
+
+for i = 0 to k - 1
+    start_idx = int(array.size(prices) * i / k)
+    end_idx = int(array.size(prices) * (i + 1) / k) - 1
+
+    // Calculate median directly without creating a new array
+    float median_price = na
+    if start_idx <= end_idx
+        median_price := array.median(array.slice(prices, start_idx, end_idx + 1))
+        array.set(clusters, i, median_price)
+
+// Persistent variables for lines and labels
+var line[] cluster_lines = array.new_line(0)
+var label[] price_labels = array.new_label(0)
+if bar_index == 0
+    cluster_lines := array.new_line(k)
+    price_labels := array.new_label(k)
+
+// Create or update infinite horizontal lines for clusters
+for i = 0 to k - 1
+    level = array.get(clusters, i)
+    if not na(level)
+        if na(array.get(cluster_lines, i))
+            // Create line if it doesn't exist
+            new_line = line.new(bar_index - bars_back, level, bar_index - bars_back + 1, level, color=color.blue, width=line_width)
+            line.set_extend(new_line, extend=extend.right) // Extend infinitely to the right
+            array.set(cluster_lines, i, new_line)
+
+            // Create label to display price
+            new_label = label.new(bar_index+5, level, text=str.tostring(level, "0.00"), color=color.blue, style=label.style_label_left, textcolor=color.white, size=size.small)
+            array.set(price_labels, i, new_label)
+            // bar_index - bars_back
+        else
+            // Update existing line position
+            existing_line = array.get(cluster_lines, i)
+            line.set_y1(existing_line, level)
+            line.set_y2(existing_line, level)
+
+            // Update existing label position and text
+            existing_label = array.get(price_labels, i)
+            label.set_xy(existing_label, bar_index+5, level) // bar_index - bars_back
+            label.set_text(existing_label, str.tostring(level, "0.00"))

@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\hocke\Desktop\playground\py_env"
+VIRTUAL_ENV="C:\Users\hocke\OneDrive\Desktop\codespace\playground\py_env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

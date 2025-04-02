@@ -94,6 +94,7 @@ class OperationGumball:
         for widget in self.feedback_frame.winfo_children():
             widget.destroy()
 
+# operational #
 if __name__ == "__main__":
     root = tk.Tk()
     game = OperationGumball(root)

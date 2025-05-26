@@ -1,4 +1,4 @@
-#!/home/slippery/dev_box/playground/py_env/bin/python3.11
+#!/home/spook/penguin/playground/py_env/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -1,2 +1,2 @@
 #!/bin/bash
-source ./py_env/Scripts/activate
+source ./py_env/bin/activate

@@ -1,0 +1,8 @@
+automated value averaging strategy
+cryptocurrency market
+using python
+the coinbase advanced trade api
+run 24/7
+send out emails to known addresses when certain events happen, such as buys or sells
+upload account and trade data to a known google sheet
+pull instructions from the google sheet, such as which cryptocurrencies to trade and how much to spend on each trade

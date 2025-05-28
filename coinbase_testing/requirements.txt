@@ -1,0 +1,4 @@
+coinbase-advanded-py
+pandas
+pytz
+statsmodels

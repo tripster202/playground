@@ -1,7 +1,7 @@
 from coinbase.rest import RESTClient
 import time
 
-client = RESTClient(key_file="cdp_api_key.json")
+client = RESTClient(key_file="key.json")
 
 def get_candles_fifteen(symbol, input_hours):
 

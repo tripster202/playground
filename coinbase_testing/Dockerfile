@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy your code
 COPY candles.py .
 COPY main.py .
-# COPY cdp_api_key.json .
+# COPY key.json .
 
 # Default command (can be overridden)
 CMD ["python3", "main.py"]

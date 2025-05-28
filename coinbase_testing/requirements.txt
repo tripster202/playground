@@ -1,4 +1,4 @@
-coinbase-advanded-py
+coinbase-advanced-py
 pandas
 pytz
 statsmodels
